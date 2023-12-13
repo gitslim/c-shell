@@ -467,4 +467,6 @@ main(void) {
             .pipeline_commands = (Command[]) {c7_1, c7_2},
     };
     run_command(&c7);
+
+    return 0;
 }
