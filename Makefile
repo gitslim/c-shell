@@ -2,7 +2,7 @@ CFLAGS=-O2 -ftrapv -fsanitize=undefined -Wall -Werror -Wformat-security -Wignore
 
 all: solution
 
-solution: errors.o parser.o scanner.o command.o
+solution: errors.o parser.o scanner.o command.o runner.o
 
 errors.o: errors.h
 
@@ -12,7 +12,12 @@ scanner.o: scanner.h
 
 command.o: command.h
 
+runner.o: runner.h
+
 clean:
 	rm -rf *.o solution
 
 .PHONY: clean
+
+run: all
+	@./solution

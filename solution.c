@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <wait.h>
 
 #include "command.h"
 #include "errors.h"
 #include "parser.h"
+#include "runner.h"
 
 
 int
@@ -26,7 +29,12 @@ main(void) {
             continue;
         }
 
-        free_command(&c);
+//        if (fork() == 0) {
+            run_command(&c);
+//        } else {
+//            wait(NULL);
+//        }
+//        free_command(&c);
         free_parser();
     }
 

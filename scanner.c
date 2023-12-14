@@ -29,6 +29,7 @@ free_scanner(void)
 int
 next_token(Token *token)
 {
+    int r;
     while (!ferror(input) && c != EOF && isspace(c) && c != '\n') {
         c = fgetc(input);
     }
@@ -78,7 +79,6 @@ next_token(Token *token)
             return init_token(token, T_OUT);
         }
     default:
-        int r;
         if ((r = init_token(token, T_WORD)) != 0) {
             return r;
         }
