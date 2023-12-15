@@ -5,12 +5,15 @@
 #include "command.h"
 
 // Инициализация парсера с указанием файла ввода
-int init_parser(FILE *input);
+int
+init_parser(FILE *input);
 
 // Освобождение ресурсов, связанных с парсером
-void free_parser(void);
+void
+free_parser(void);
 
 // Получение следующей команды из входного потока
-int next_command(Command *c);
+int
+next_command(Command *c);
 
 #endif

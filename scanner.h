@@ -29,15 +29,19 @@ typedef struct {
 } Token;
 
 // Инициализация сканера с указанием файла ввода
-int init_scanner(FILE *f);
+int
+init_scanner(FILE *f);
 
 // Освобождение ресурсов, связанных со сканером
-void free_scanner(void);
+void
+free_scanner(void);
 
 // Получение следующего токена из входного потока
-int next_token(Token *token);
+int
+next_token(Token *token);
 
 // Освобождение ресурсов, связанных с токеном
-void free_token(Token *token);
+void
+free_token(Token *token);
 
 #endif

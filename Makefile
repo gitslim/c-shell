@@ -19,5 +19,3 @@ clean:
 
 .PHONY: clean
 
-run: all
-	@./solution

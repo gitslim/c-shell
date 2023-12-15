@@ -29,12 +29,12 @@ main(void) {
             continue;
         }
 
-//        if (fork() == 0) {
+        if (fork() == 0) {
             run_command(&c);
-//        } else {
-//            wait(NULL);
-//        }
-//        free_command(&c);
+        } else {
+            wait(NULL);
+        }
+        free_command(&c);
         free_parser();
     }
 

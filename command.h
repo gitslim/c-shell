@@ -73,36 +73,47 @@ typedef struct Command {
 } Command;
 
 // Инициализация пустой команды
-int init_empty_command(Command *c);
+int
+init_empty_command(Command *c);
 
 // Инициализация последовательности команд
-int init_sequence_command(Command *c, int kind);
+int
+init_sequence_command(Command *c, int kind);
 
 // Добавление команды к последовательности
-int append_command_to_sequence(Command *c, Command *cmd);
+int
+append_command_to_sequence(Command *c, Command *cmd);
 
 // Добавление операции к последовательности
-int append_operation_to_sequence(Command *c, int op);
+int
+append_operation_to_sequence(Command *c, int op);
 
 // Инициализация команды для конвейера
-int init_pipeline_command(Command *c);
+int
+init_pipeline_command(Command *c);
 
 // Добавление команды к конвейеру
-int append_to_pipeline(Command *c, Command *cmd);
+int
+append_to_pipeline(Command *c, Command *cmd);
 
 // Инициализация команды для перенаправления
-int init_redirect_command(Command *c);
+int
+init_redirect_command(Command *c);
 
 // Установка команды для перенаправления
-int set_rd_command(Command *c, Command *cmd);
+int
+set_rd_command(Command *c, Command *cmd);
 
 // Инициализация простой команды
-int init_simple_command(Command *c);
+int
+init_simple_command(Command *c);
 
 // Добавление аргумента к простой команде
-int append_word_simple_command(Command *c, char *arg);
+int
+append_word_simple_command(Command *c, char *arg);
 
 // Освобождение ресурсов, связанных с командой
-void free_command(Command *c);
+void
+free_command(Command *c);
 
 #endif

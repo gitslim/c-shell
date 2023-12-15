@@ -14,28 +14,8 @@
 
 int
 simple_cmd(Command *cmd) {
-    pid_t pid;
-    int status;
-
-    pid = fork();
-    if (pid < 0) {
-        perror("fork");
-        exit(EXIT_FAILURE);
-
-    } else if (pid == 0) {
-        execvp(cmd->argv[0], cmd->argv);
-        // exec функции завершаются только при ошибке
-        perror("execvp");
-        exit(EXIT_FAILURE);
-
-    } else {
-        // ожидание завершения конкретного pid
-//        do {
-//            waitpid(pid, &status, WUNTRACED);
-//        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-        wait(&status);
-    }
-    return status;
+    execvp(cmd->argv[0], cmd->argv);
+    exit(EXIT_FAILURE);
 }
 
 int
@@ -61,8 +41,8 @@ redirect_cmd(Command *cmd) {
             exit(EXIT_FAILURE);
     }
 
-    dup2(fd, stream);
-    close(fd);
+    dup2(stream, fd);
+    close(stream);
 
     int status = run_command(cmd->rd_command);
     return status;
@@ -166,7 +146,7 @@ pipeline_cmd(Command *cmd) {
 
         } else { // parent
             if (i == cmd->pipeline_size - 1) {
-                wait(&status); // Ждем завершения последней команды в конвейере
+//                wait(&status); // Ждем завершения последней команды в конвейере
             }
         }
     }

@@ -12,6 +12,7 @@ enum Errors {
     ENUM_ERRORS_END
 };
 
-const char *error_message(int error);
+const char
+*error_message(int error);
 
 #endif
